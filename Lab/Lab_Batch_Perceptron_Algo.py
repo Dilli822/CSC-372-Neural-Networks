@@ -7,6 +7,7 @@ y = np.array([-1, 1, 1, 1])  # Target labels (-1 for 0, +1 for 1)
 
 # Initialize weights and bias
 w = np.zeros(X.shape[1])  # Weight vector (2D)
+# w = np.array([2,2])
 b = 0                     # Bias
 eta = 1                   # Learning rate
 max_epochs = 10           # Max number of iterations
@@ -117,8 +118,15 @@ def print_batch_perceptron_algorithm():
     print("    ∑[ n ∈ x ] x(n) d(n) is sum of all misclassified samples.\n")
     print("This equation is the Batch Perceptron Algorithm.\n")
     
-    # Step 4: Batch Nature of the Algorithm
-    print("4. Batch Nature of the Algorithm:")
+    # Step 4: Classification Condition in the Algorithm
+    print("4. Classification Condition in the Algorithm:")
+    print("----------------------------------------------------------------------------------")
+    print("Class 1 (y = -1): If the weighted sum (w1*x1 + w2*x2 + b) is less than or equal to >= 0.\n")
+    print("Class 2 (y = 1): If the weighted sum (w1*x1 + w2*x2 + b) is greater than < 0.")
+    
+    print("----------------------------------------------------------------------------------\n")
+    # Step 5: Batch Nature of the Algorithm
+    print("5. Batch Nature of the Algorithm:")
     print("The key feature of this algorithm is that it corrects the weight vector by summing up the misclassifications over the entire batch,")
     print("rather than just a single sample at a time. Hence, the algorithm is called a batch method because the weight update is computed")
     print("using all misclassified samples within the current batch.\n")
