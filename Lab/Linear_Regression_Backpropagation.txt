@@ -1,0 +1,105 @@
+Solving Linear Regression using Neural Networks with Backpropagation
+
+1. Problem Formulation
+Linear regression aims to model the relationship:
+
+    y = wx + b
+
+where:
+    x is the input feature,
+    y is the target output,
+    w is the weight (coefficient),
+    b is the bias (intercept).
+
+The objective is to minimize the Mean Squared Error (MSE):
+
+    L = (1/N) * Σ (y_i - ŷ_i)^2
+
+where:
+    ŷ_i = wx_i + b is the predicted value.
+
+2. Neural Network Representation
+    - Input Layer: One neuron for x.
+    - Output Layer: One neuron for ŷ, applying a linear activation function f(x) = x.
+    - Parameters: Weight w and bias b.
+    - Loss Function: Mean Squared Error (MSE).
+
+3. Backpropagation Algorithm
+Backpropagation updates the parameters using Gradient Descent:
+
+Step 1: Compute Predictions
+
+    ŷ = wx + b
+
+Step 2: Compute the Loss (MSE)
+
+    L = (1/N) * Σ (y - ŷ)^2
+
+Step 3: Compute Gradients
+
+Derivative w.r.t w:
+
+    ∂L/∂w = (-2/N) * Σ x(y - ŷ)
+
+Derivative w.r.t b:
+
+    ∂L/∂b = (-2/N) * Σ (y - ŷ)
+
+Step 4: Update Parameters
+
+Using Gradient Descent with a learning rate η:
+
+    w := w - η * ∂L/∂w
+    b := b - η * ∂L/∂b
+
+4. Implementation in Python
+
+Here's how to implement linear regression using a neural network with backpropagation:
+
+```python
+import numpy as np
+
+# Dataset (Static)
+X = np.array([1, 2, 3, 4, 5], dtype=float).reshape(-1, 1)
+y = np.array([3, 5, 7, 9, 11], dtype=float).reshape(-1, 1)
+
+# Initialize parameters randomly
+w = np.random.randn(1)
+b = np.random.randn(1)
+learning_rate = 0.001
+epochs = 10000
+
+# Training using Backpropagation
+for epoch in range(epochs):
+    y_pred = w * X + b  # Forward pass
+    loss = np.mean((y - y_pred) ** 2)  # Mean Squared Error
+
+    # Compute gradients
+    dw = -2 * np.mean(X * (y - y_pred))
+    db = -2 * np.mean(y - y_pred)
+
+    # Update parameters
+    w -= learning_rate * dw
+    b -= learning_rate * db
+
+# Display final model parameters
+print(f"Final Model: y = {w[0]:.4f}x + {b[0]:.4f}")
+```
+
+
+"""
+X = np.array([1, 2, 3, 4, 5])  # 1D array
+X_reshaped = X.reshape(-1, 1)   # Convert to 2D column vector
+
+print("Original Shape:", X.shape)       # Output: (5,)
+print("Reshaped Shape:", X_reshaped.shape)  # Output: (5,1)
+
+--------------------------------------------
+W = np.random.randn(1)
+b = np.random.randn(1)
+
+W and b are initialized randomly from a standard normal distribution.
+They are drawn from a Gaussian distribution with mean = 0 and variance = 1.
+np.random.randn(1) generates a one-dimensional matrix, also called a row vector.
+
+"""

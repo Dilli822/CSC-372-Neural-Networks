@@ -1,0 +1,93 @@
+Mathematical Explanation of `.reshape(-1,1)` in Linear Regression
+
+Let’s assume we have a dataset:
+
+X = [ 1  2  3  4  5 ]
+y = [ 3  5  7  9  11 ]
+
+We want to perform linear regression using the equation:
+    y_hat = XW + b
+
+where:
+- X is the input feature vector.
+- W is the weight parameter.
+- b is the bias term.
+- y_hat is the predicted output.
+
+-----------------------------------------------------------
+1. What Happens Without `.reshape(-1,1)`?
+-----------------------------------------------------------
+
+By default, `X` is a **1D row vector**:
+
+    X = [ 1  2  3  4  5 ], shape: (5,)
+
+If we try to multiply it with a weight matrix W:
+
+    W = [ w ], shape: (1,1)
+
+The multiplication:
+    X * W
+is **not defined** because:
+- X has shape **(5,)** (1D array, not a proper matrix).
+- W has shape **(1,1)**.
+- Matrix multiplication requires **(m × n) · (n × p) = (m × p)**.
+- Here, **(5,) · (1,1)** does not follow this rule.
+
+-----------------------------------------------------------
+2. Applying `.reshape(-1,1)`
+-----------------------------------------------------------
+
+When we use:
+
+    X = X.reshape(-1,1)
+
+It becomes a **2D column vector**:
+
+    X =
+    [ 1 ]
+    [ 2 ]
+    [ 3 ]
+    [ 4 ]
+    [ 5 ], shape: (5,1)
+
+Now, multiplication with W works:
+
+    X * W =
+    [ 1 ] * [ w ] = [ 1w ]
+    [ 2 ]   [ w ]   [ 2w ]
+    [ 3 ]   [ w ]   [ 3w ]
+    [ 4 ]   [ w ]   [ 4w ]
+    [ 5 ]   [ w ]   [ 5w ]
+
+This correctly results in a (5,1) output, making further operations valid.
+
+-----------------------------------------------------------
+3. Including the Bias Term
+-----------------------------------------------------------
+
+In linear regression, we also add a bias **b**:
+
+    y_hat = X * W + b
+
+If **b** is a scalar, NumPy **automatically broadcasts it**, so the equation works fine.
+
+    y_hat =
+    [ 1w + b ]
+    [ 2w + b ]
+    [ 3w + b ]
+    [ 4w + b ]
+    [ 5w + b ]
+
+-----------------------------------------------------------
+4. Conclusion
+-----------------------------------------------------------
+
+🔴 Without `.reshape(-1,1)`
+- X is **1D (5,)** instead of **2D (5,1)**.
+- **Matrix multiplication does not work**.
+
+✅ With `.reshape(-1,1)`
+- X becomes a **column vector (5,1)**.
+- **Matrix multiplication is valid**.
+- **Compatible with linear regression and neural networks**.

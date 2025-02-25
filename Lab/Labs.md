@@ -7,6 +7,7 @@
 ###### Consider X-OR Learning Problem by MLP. Find the final weight of the MLP by using backpropagation algorithm for training.
 ###### Use activation function sigmoid, tanh and ReLu comparing which one will find the final weight.
 ###### learning rate = 0.001
+##### bias = 1
 
 ###### Input Layer weights | assume inputs x self
 ###### w00 = 0.7
