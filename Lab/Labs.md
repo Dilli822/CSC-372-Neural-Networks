@@ -23,3 +23,5 @@
 ###### W10 = 0.7
 ###### W20 = 0.8
 
+##### Lab 4: Implement Linear Regression y = mx + b and Multiple Linear Regression y = bo + b1x1+ b2x2 + ... + bnxn using gradient descent method (indirect method/iterative method) using batch training/learning.
+

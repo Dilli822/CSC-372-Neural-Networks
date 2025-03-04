@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lil'Log</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .header {
+            padding: 20px;
+        }
+        .header h1 {
+            font-weight: bold;
+        }
+        .header p {
+            color: #6c757d;
+        }
+        .post-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .pagination-container {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-sm mt-4">
+        <div class="header ">
+            <h1 class="text-left">👋 Welcome to Lil'Log</h1>
+            <p class="text-left">Hi, this is Lilian. I've been documenting my learning notes on this blog since 2017. Based on the number of grammar mistakes in my posts, you can tell how much ChatGPT is involved 😉.</p>
+            
+        
+        <div id="posts-container"></div>
+        
+        <nav>
+            <ul class="pagination pagination-container">
+                <li class="page-item"><a class="page-link" href="#" onclick="loadPosts(1)">1</a></li>
+                <li class="page-item"><a class="page-link" href="#" onclick="loadPosts(2)">2</a></li>
+                <li class="page-item"><a class="page-link" href="#" onclick="loadPosts(3)">3</a></li>
+                <li class="page-item"><a class="page-link" href="#" onclick="loadPosts(4)">4</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <script>
+        const posts = {
+            1: [
+                { title: "Reward Hacking in Reinforcement Learning", date: "Nov 28, 2024", time: "37 min", author: "Lilian Weng", desc: "Reward hacking occurs when an RL agent exploits reward function flaws..." },
+                { title: "Extrinsic Hallucinations in LLMs", date: "July 7, 2024", time: "30 min", author: "Lilian Weng", desc: "Hallucination in LLMs refers to unfaithful or fabricated content..." }
+            ],
+            2: [
+                { title: "Diffusion Models for Video Generation", date: "June 15, 2024", time: "45 min", author: "Lilian Weng", desc: "Diffusion models help generate video frames progressively..." },
+                { title: "Contrastive Learning in Vision Models", date: "May 10, 2024", time: "25 min", author: "Lilian Weng", desc: "Contrastive learning improves vision models by learning differences..." }
+            ],
+            3: [
+                { title: "Transformers Beyond NLP", date: "April 5, 2024", time: "40 min", author: "Lilian Weng", desc: "Transformers are being applied to fields beyond NLP, such as biology..." }
+            ],
+            4: [
+                { title: "Reward Hacking in Reinforcement Learning", date: "Nov 28, 2024", time: "37 min", author: "Lilian Weng", desc: "Reward hacking occurs when an RL agent exploits reward function flaws..." },
+                { title: "Extrinsic Hallucinations in LLMs", date: "July 7, 2024", time: "30 min", author: "Lilian Weng", desc: "Hallucination in LLMs refers to unfaithful or fabricated content..." }
+            ],
+            5: [
+                { title: "Diffusion Models for Video Generation", date: "June 15, 2024", time: "45 min", author: "Lilian Weng", desc: "Diffusion models help generate video frames progressively..." },
+                { title: "Contrastive Learning in Vision Models", date: "May 10, 2024", time: "25 min", author: "Lilian Weng", desc: "Contrastive learning improves vision models by learning differences..." }
+            ],
+            6: [
+                { title: "Transformers Beyond NLP", date: "April 5, 2024", time: "40 min", author: "Lilian Weng", desc: "Transformers are being applied to fields beyond NLP, such as biology..." }
+            ],
+            1: [
+                { title: "090090i Hacking in Reinforcement Learning", date: "Nov 28, 2024", time: "37 min", author: "Lilian Weng", desc: "Reward hacking occurs when an RL agent exploits reward function flaws..." },
+                { title: "Extrinsic Hallucinations in LLMs", date: "July 7, 2024", time: "30 min", author: "Lilian Weng", desc: "Hallucination in LLMs refers to unfaithful or fabricated content..." }
+            ],
+            2: [
+                { title: "Diffusion Models for Video Generation", date: "June 15, 2024", time: "45 min", author: "Lilian Weng", desc: "Diffusion models help generate video frames progressively..." },
+                { title: "Contrastive Learning in Vision Models", date: "May 10, 2024", time: "25 min", author: "Lilian Weng", desc: "Contrastive learning improves vision models by learning differences..." }
+            ],
+            3: [
+                { title: "Transformers Beyond NLP", date: "April 5, 2024", time: "40 min", author: "Lilian Weng", desc: "Transformers are being applied to fields beyond NLP, such as biology..." }
+            ],
+            4: [
+                { title: "Reward Hacking in Reinforcement Learning", date: "Nov 28, 2024", time: "37 min", author: "Lilian Weng", desc: "Reward hacking occurs when an RL agent exploits reward function flaws..." },
+                { title: "Extrinsic Hallucinations in LLMs", date: "July 7, 2024", time: "30 min", author: "Lilian Weng", desc: "Hallucination in LLMs refers to unfaithful or fabricated content..." }
+            ],
+            5: [
+                { title: "Diffusion Models for Video Generation", date: "June 15, 2024", time: "45 min", author: "Lilian Weng", desc: "Diffusion models help generate video frames progressively..." },
+                { title: "Contrastive Learning in Vision Models", date: "May 10, 2024", time: "25 min", author: "Lilian Weng", desc: "Contrastive learning improves vision models by learning differences..." }
+            ],
+            6: [
+                { title: "Transformers Beyond NLP", date: "April 5, 2024", time: "40 min", author: "Lilian Weng", desc: "Transformers are being applied to fields beyond NLP, such as biology..." }
+            ],
+        };
+        
+        function loadPosts(page) {
+            const container = document.getElementById("posts-container");
+            container.innerHTML = "";
+            
+            posts[page].forEach(post => {
+                container.innerHTML += `
+                    <div class="post-card">
+                        <h3>${post.title}</h3>
+                        <p>${post.desc}</p>
+                        <small>Date: ${post.date} | Estimated Reading Time: ${post.time} | Author: ${post.author}</small>
+                    </div>
+                `;
+            });
+        }
+        
+        window.onload = () => loadPosts(1);
+    </script>
+</body>
+</html>

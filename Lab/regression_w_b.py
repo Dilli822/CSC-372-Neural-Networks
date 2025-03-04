@@ -15,7 +15,7 @@ print("random weight is ", w)
 b = np.random.randn(1)
 print("random bias is ", b)
 learning_rate = 0.001
-epochs = 10000
+epochs = 100000
 
 # Training using Backpropagation
 losses = []
@@ -57,6 +57,7 @@ while True:
     except ValueError:
         print("Exiting...")
         break
+
 
 
 

@@ -63,3 +63,17 @@ while True:
     except ValueError:
         print("Exiting...")
         break
+
+"""
+If Online Training is required, the training loop can be modified as follows:
+for epoch in range(epochs):
+    for i in range(len(X)):  # Loop over individual examples
+        x_i = X[i].reshape(1, -1)  # Single example (1, 2)
+        y_i = y[i].reshape(1, 1)   # Single target (1, 1)
+        y_pred = np.dot(x_i, w) + b  # Prediction for one example
+        dw = -2 * np.dot(x_i.T, (y_i - y_pred))  # Gradient for one example
+        db = -2 * (y_i - y_pred)  # Gradient for one example
+        w -= learning_rate * dw
+        b -= learning_rate * db
+        
+"""
