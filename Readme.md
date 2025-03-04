@@ -44,7 +44,7 @@ This repository serves as a **digital notebook** of my academic journey in under
 
 - [Tribhuvan University IOST Official Website](https://iost.tu.edu.np/)
 - [Course Syllabus for CSC 372](https://cdcsit.edu.np/wp-content/uploads/2020/07/B.Sc_.CSIT-6th-sem-final-syllabus-1.pdf) 
-- [B.S.c.CSIT [CSC372 Resources]](https://merocsit.github.io/solutions/semester/sixth/Electives-II/CSC%20372%20Neural%20Networks/csc372_Neural_Networks.html)
+- [B.Sc.CSIT [CSC 372 Resources]](https://merocsit.github.io/solutions/semester/sixth/Electives-II/CSC%20372%20Neural%20Networks/csc372_Neural_Networks.html)
 
 ## 📬 Contact
 
