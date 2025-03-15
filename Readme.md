@@ -50,8 +50,8 @@ This repository serves as a **digital notebook** of my academic journey in under
 
 Feel free to reach out if you have any questions or suggestions:
 
-- **Email:** [your-email@example.com](mailto:dillihangrai.078@godawari.edu.np)
-- **LinkedIn:** [Your LinkedIn Profile](https://www.linkedin.com/in/dilli708/)
+- **Email:** [your-email@example.com][mailto:dillihangrai.078@godawari.edu.np]
+- **LinkedIn:** [Your LinkedIn Profile][https://www.linkedin.com/in/dilli708/]
 
 ---
 

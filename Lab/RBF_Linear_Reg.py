@@ -30,7 +30,7 @@ def predict(x_new):
     return sum(w_i * gaussian_rbf(x_new, c_i, sigma) for w_i, c_i in zip(w, centers))
 
 # Example prediction
-x_new = np.array([2, 3])  # More than 2D Array 
+x_new = np.array([4.4, 5.4])  # More than 2D Array 
 y_pred = predict(x_new)
 print(f"Predicted Y for {x_new}: {y_pred}")
 
