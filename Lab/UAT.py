@@ -9,6 +9,14 @@ def sigmoid(x):
 def sigmoid_derivative(x):
     return x * (1 - x)
 
+# Activation function (Tanh)
+def tanh(x):
+    return np.tanh(x)
+
+# Derivative of Tanh
+def tanh_derivative(x):
+    return 1 - np.power(x, 2)
+
 # Generate training data (approximating y = sin(x))
 np.random.seed(42)
 X = np.linspace(-np.pi, np.pi, 100).reshape(-1, 1)  # Input values
@@ -20,7 +28,7 @@ y = eval(y_string)
 print(y)  # This will print the result of np.sin(X)
 # Initialize weights and biases
 input_size = 1
-hidden_size = 10  # Number of neurons in the hidden layer
+hidden_size = 20 # Number of neurons in the hidden layer
 output_size = 1
 
 W1 = np.random.randn(input_size, hidden_size)
@@ -29,14 +37,14 @@ W2 = np.random.randn(hidden_size, output_size)
 b2 = np.zeros((1, output_size))
 
 # Training parameters
-epochs = 50000
+epochs = 500
 learning_rate = 0.01
 
 # Training loop
 for epoch in range(epochs):
     # Forward propagation
     hidden_layer_input = np.dot(X, W1) + b1
-    hidden_layer_output = sigmoid(hidden_layer_input)
+    hidden_layer_output = tanh(hidden_layer_input)
     output_layer_input = np.dot(hidden_layer_output, W2) + b2
     y_pred = output_layer_input  # Linear activation for output
 
@@ -48,7 +56,7 @@ for epoch in range(epochs):
     d_W2 = np.dot(hidden_layer_output.T, d_loss)
     d_b2 = np.sum(d_loss, axis=0, keepdims=True)
 
-    d_hidden_layer = np.dot(d_loss, W2.T) * sigmoid_derivative(hidden_layer_output)
+    d_hidden_layer = np.dot(d_loss, W2.T) * tanh_derivative(hidden_layer_output)
     d_W1 = np.dot(X.T, d_hidden_layer)
     d_b1 = np.sum(d_hidden_layer, axis=0, keepdims=True)
 
